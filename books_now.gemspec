@@ -2,7 +2,7 @@ Gem::Specification.new do |s|
   s.name = %q{books_now}
   s.authors = ["Carlos Moreno"]
   s.licenses = ["MIT"]
-  s.version = "0.0.0"
+  s.version = "0.0.1"
   s.date = %q{2019-02-06}
   s.summary = %q{books_now retrieves books info, using it's ISBN. Shows an array representation with JSON data for each finding}
   s.files = [
