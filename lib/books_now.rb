@@ -1,5 +1,6 @@
 require 'rest-client'
 require 'json'
+require 'csv'
 module BooksNow
   class Books
     @book_response
@@ -10,8 +11,12 @@ module BooksNow
 	:url => 'https://openlibrary.org/api/books?bibkeys=ISBN:'+isbn,
 	:verify_ssl => false
       ).execute
-      #results = JSON.parse(response.to_str)
-      return @book_response.to_s 
+      @book_response = @book_response.split('=')[1].split(';')[0]
+      @book_response = JSON.parse(@book_response)
+      return @book_response.to_s
+    end
+    def get_csv
+      CSV.open("books.csv", "wb") {|csv| @book_response.to_a.each {|token| csv << token} }
     end
   end
 end
